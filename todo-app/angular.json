@@ -6,13 +6,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "myapp": {
+    "todo-app": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -20,7 +16,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/myapp",
+            "outputPath": "dist/todo-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -31,9 +27,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js" 
+            ]
           },
           "configurations": {
             "production": {
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "myapp:build"
+            "browserTarget": "todo-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "myapp:build:production"
+              "browserTarget": "todo-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "myapp:build"
+            "browserTarget": "todo-app:build"
           }
         },
         "test": {
@@ -94,7 +94,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
@@ -116,16 +116,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "myapp:serve"
+            "devServerTarget": "todo-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "myapp:serve:production"
+              "devServerTarget": "todo-app:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "myapp"
+  "defaultProject": "todo-app"
 }
